@@ -1,3 +1,5 @@
+<wxs src="../../common/wxs/touchMove.wxs" module="touch"></wxs>
+
 <view class="container">
   <view class="tabs">
     <view
@@ -19,8 +21,8 @@
   <slot name="extend"></slot>
   <view
     class="tab-panel"
-    bind:touchstart="handleTouchStart"
-    bind:touchend="handleTouchEnd"
+    bind:touchstart="{{ touch.touchMoveStart }}"
+    bind:touchend="{{ touch.touchMoveEnd }}"
   >
     <slot name="panel"></slot>
   </view>

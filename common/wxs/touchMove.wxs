@@ -1,0 +1,30 @@
+var touchStartX = 0
+
+function touchMoveStart(evt) {
+  touchStartX = evt.changedTouches[0].clientX
+}
+
+function touchMoveEnd(evt, ownerInstance) {
+  var touchEndX = evt.changedTouches[0].clientX
+  var distance = touchStartX - touchEndX
+  var direction = 0 // -1:后退 0:不动 1:前进
+  if (distance > 0 && canSwitchTab(distance)) {
+    direction = 1
+  }
+  if (distance < 0 && canSwitchTab(distance)) {
+    direction = -1
+  }
+  if (direction !== 0) {
+    ownerInstance.callMethod('handleTouchMove', { direction: direction })
+  }
+}
+
+// 当移动距离大于50时才切换tab，避免误触屏幕移动tab
+function canSwitchTab(distance) {
+  return Math.abs(distance) > 50
+}
+
+module.exports = {
+  touchMoveStart: touchMoveStart,
+  touchMoveEnd: touchMoveEnd
+}

@@ -20,26 +20,29 @@ Component({
         currentTabIndex: index,
       })
     },
-    handleTouchStart(evt) {
-      this.setData({
-        touchStartClientX: evt.changedTouches[0].clientX
-      })
-    },
-    handleTouchEnd(evt) {
-      const { touchStartClientX, currentTabIndex } = this.data
-      const touchEndClientX = evt.changedTouches[0].clientX
-      const clientXDiff = touchStartClientX - touchEndClientX
-      if (clientXDiff > 0 && currentTabIndex < 2) {
-        this.setData({
-          currentTabIndex: currentTabIndex + 1
-        })
+    // direction: -1:后退 0:不动 1:前进
+    handleTouchMove({ direction }) {
+      const MIN_TAB_INDEX = 0
+      const MAX_TAB_INDEX = this.properties.tabs.length - 1
+      const { currentTabIndex } = this.data
+      let targetTabIndex = currentTabIndex
+      if (direction === -1) {
+        targetTabIndex--
+      }
+      if (direction === 1) {
+        targetTabIndex++
+      }
+      if (targetTabIndex < MIN_TAB_INDEX || targetTabIndex > MAX_TAB_INDEX) {
         return
       }
-      if (clientXDiff < 0 && currentTabIndex > 0) {
-        this.setData({
-          currentTabIndex: currentTabIndex - 1
-        })
+      const customEvent = {
+        currentTarget: {
+          dataset: {
+            index: targetTabIndex,
+          }
+        }
       }
+      this.handleTabChange(customEvent)
     },
   },
 });
