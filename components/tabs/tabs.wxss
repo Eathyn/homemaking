@@ -1,0 +1,29 @@
+.tabs {
+	display: flex;
+	height: 90rpx;
+	box-sizing: border-box;
+}
+
+.tab-item {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.item-label {
+	color: #888888;
+	white-space: nowrap;
+}
+
+.active-tab {
+	color: #333333;
+	font-weight: bold;
+}
+
+.divider {
+	width: 50rpx;
+	height: 6rpx;
+	margin-top: 10rpx;
+	background-color: #f3d066;
+}
