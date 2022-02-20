@@ -14,10 +14,8 @@ Page({
   },
 
   handleTabChange(e) {
-    const { index } = e.currentTarget.dataset
-    this.setData({
-      currentTabIndex: index,
-    })
+    const { index } = e.detail
+    console.log(index)
   },
 
   handleCategoryChange(e) {
