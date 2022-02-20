@@ -10,7 +10,6 @@ Component({
   },
   data: {
     currentTabIndex: 0,
-    touchStartClientX: 0,
   },
   methods: {
     handleTabChange(e) {
