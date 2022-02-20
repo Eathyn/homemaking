@@ -15,6 +15,10 @@ Component({
   methods: {
     handleTabChange(e) {
       const { index } = e.currentTarget.dataset
+      const { currentTabIndex } = this.data
+      if (index === currentTabIndex) {
+        return
+      }
       this.triggerEvent('change', { index })
       this.setData({
         currentTabIndex: index,
