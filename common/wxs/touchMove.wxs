@@ -1,17 +1,21 @@
 var touchStartX = 0
+var touchStartY = 0
 
 function touchMoveStart(evt) {
   touchStartX = evt.changedTouches[0].clientX
+  touchStartY = evt.changedTouches[0].clientY
 }
 
 function touchMoveEnd(evt, ownerInstance) {
   var touchEndX = evt.changedTouches[0].clientX
-  var distance = touchStartX - touchEndX
+  var touchEndY = evt.changedTouches[0].clientY
+  var distanceX = touchStartX - touchEndX
+  var distanceY = touchStartY - touchEndY
   var direction = 0 // -1:后退 0:不动 1:前进
-  if (distance > 0 && canSwitchTab(distance)) {
+  if (distanceX > 0 && canSwitchTab(distanceX, distanceY)) {
     direction = 1
   }
-  if (distance < 0 && canSwitchTab(distance)) {
+  if (distanceX < 0 && canSwitchTab(distanceX, distanceY)) {
     direction = -1
   }
   if (direction !== 0) {
@@ -19,9 +23,10 @@ function touchMoveEnd(evt, ownerInstance) {
   }
 }
 
-// 当移动距离大于50时才切换tab，避免误触屏幕移动tab
-function canSwitchTab(distance) {
-  return Math.abs(distance) > 50
+// 水平方向移动距离需大于50，避免误触屏幕移动tab
+// 垂直方向移动距离需小于30，避免斜向滑动也能切换tab
+function canSwitchTab(distanceX, distanceY) {
+  return Math.abs(distanceX) > 50 && Math.abs(distanceY) < 30
 }
 
 module.exports = {
