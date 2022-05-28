@@ -1,39 +1,29 @@
 <view class="container">
-  <view class="tabs">
-    <view
-      class="tab-item"
-      wx:for="{{ tabs }}"
-      wx:key="index"
-      bind:tap="handleTabChange"
-      data-index="{{ index }}"
-    >
-      <view class="tab-label {{ currentTabIndex === index ? 'active-tab' : '' }}">
-        {{ item }}
-      </view>
-      <view
-        class="divider"
-        wx:if="{{ currentTabIndex === index }}"
-      >
+  <i-tabs
+    tabs="{{ tabs }}"
+    bind:change="handleTabChange"
+  >
+    <view slot="extend">
+      <view class="category">
+        <swiper
+          display-multiple-items="{{ 2 }}"
+          next-margin="60rpx"
+          style="height: 150rpx"
+        >
+          <swiper-item
+            wx:for="{{ categoryList }}"
+            wx:key="index"
+            bind:tap="handleCategoryChange"
+            data-id="{{ item.id }}"
+          >
+            <view class="category-swiper-item">
+              <text class="category-name">{{ item.name }}</text>
+            </view>
+          </swiper-item>
+        </swiper>
       </view>
     </view>
-  </view>
-  <view class="category">
-    <swiper
-      display-multiple-items="{{ 2 }}"
-      next-margin="60rpx"
-      style="height: 150rpx"
-    >
-      <swiper-item
-        wx:for="{{ categoryList }}"
-        wx:key="index"
-        bind:tap="handleCategoryChange"
-        data-id="{{ item.id }}"
-      >
-        <view class="category-swiper-item">
-          <text class="category-name">{{ item.name }}</text>
-        </view>
-      </swiper-item>
-    </swiper>
-  </view>
-  <view class="tab-panel"></view>
+
+    <view slot="panel">panel content</view>
+  </i-tabs>
 </view>

@@ -17,15 +17,9 @@ Page({
       },
     ],
   },
+
   onLoad: function (options) {
 
-  },
-
-  handleTabChange(evt) {
-    const { index } = evt.currentTarget.dataset
-    this.setData({
-      currentTabIndex: index,
-    })
   },
 
   handleCategoryChange(evt) {
