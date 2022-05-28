@@ -36,3 +36,21 @@
   width: 50rpx;
   background-color: #F3D066;
 }
+
+.category {
+  padding: 30rpx 0 30rpx 30rpx;
+}
+
+.category-swiper-item {
+  border-radius: 20rpx;
+  width: 300rpx;
+  height: 150rpx;
+  background-image: linear-gradient(to right, #E68D44, #EB6D59);
+}
+
+.category-name {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  color: #FFFFFF;
+}

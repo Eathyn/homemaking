@@ -17,6 +17,23 @@
       </view>
     </view>
   </view>
-  <view class="category"></view>
+  <view class="category">
+    <swiper
+      display-multiple-items="{{ 2 }}"
+      next-margin="60rpx"
+      style="height: 150rpx"
+    >
+      <swiper-item
+        wx:for="{{ categoryList }}"
+        wx:key="index"
+        bind:tap="handleCategoryChange"
+        data-id="{{ item.id }}"
+      >
+        <view class="category-swiper-item">
+          <text class="category-name">{{ item.name }}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
   <view class="tab-panel"></view>
 </view>
