@@ -1,3 +1,7 @@
+import Service from '../../model/service'
+
+const service = new Service()
+
 Page({
   data: {
     tabs: ['全部服务', '在提供', '正在找'],
@@ -19,7 +23,11 @@ Page({
   },
 
   onLoad: function (options) {
+    this._getServiceList()
+  },
 
+  async _getServiceList() {
+    const serviceList = await service.getServiceList(1, 10)
   },
 
   handleCategoryChange(evt) {
