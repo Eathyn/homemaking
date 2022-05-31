@@ -24,6 +24,13 @@
       </view>
     </view>
 
-    <view slot="panel">panel content</view>
+    <view slot="panel">
+      <view
+        wx:for="{{ serviceList }}"
+        wx:key="index"
+      >
+        <i-service-preview service="{{ item }}" />
+      </view>
+    </view>
   </i-tabs>
 </view>
