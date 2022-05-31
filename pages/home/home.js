@@ -15,11 +15,23 @@ Page({
     this._getCategoryListWithAll()
   },
 
+  async onPullDownRefresh() {
+    const serviceList = await service.reset().getServiceList()
+    this.setData({ serviceList })
+    wx.stopPullDownRefresh()
+  },
+
+  async onReachBottom() {
+    if (!service.hasMoreData) {
+      return
+    }
+    const serviceList = await service.getServiceList()
+    this.setData({ serviceList })
+  },
+
   async _getServiceList() {
-    const serviceList = await service.getServiceList(1, 10)
-    this.setData({
-      serviceList: serviceList.data
-    })
+    const serviceList = await service.getServiceList()
+    this.setData({ serviceList })
   },
 
   async _getCategoryList() {
