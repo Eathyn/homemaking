@@ -1,23 +1,24 @@
 import Service from '../../model/service'
 import Category from '../../model/category'
+import { throttle } from '../../utils/utils'
 
 const service = new Service()
 
 Page({
   data: {
     tabs: ['全部服务', '在提供', '正在找'],
-    currentTabIndex: 0,
     categoryList: [],
+    tabIndex: 0,
+    categoryId: 0,
   },
 
-  onLoad: function (options) {
+  onLoad() {
     this._getServiceList()
     this._getCategoryListWithAll()
   },
 
   async onPullDownRefresh() {
-    const serviceList = await service.reset().getServiceList()
-    this.setData({ serviceList })
+    await this._getServiceList()
     wx.stopPullDownRefresh()
   },
 
@@ -30,7 +31,7 @@ Page({
   },
 
   async _getServiceList() {
-    const serviceList = await service.getServiceList()
+    const serviceList = await service.reset().getServiceList(this.data.categoryId, this.data.tabIndex)
     this.setData({ serviceList })
   },
 
@@ -44,7 +45,19 @@ Page({
     this.setData({ categoryList })
   },
 
-  handleCategoryChange(evt) {
-    const { id } = evt.currentTarget.dataset
-  }
+  handleTabChange(evt) {
+    this.data.tabIndex = evt.detail.index
+    this._getServiceList()
+  },
+
+  handleCategoryChange: throttle(
+    function (evt) {
+      const { id: categoryId } = evt.currentTarget.dataset
+      if (this.data.categoryId === categoryId) {
+        return
+      }
+      this.data.categoryId = categoryId
+      this._getServiceList()
+    },
+  )
 });

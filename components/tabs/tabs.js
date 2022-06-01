@@ -1,3 +1,5 @@
+import { throttle } from '../../utils/utils'
+
 Component({
   options: {
     multipleSlots: true,
@@ -12,16 +14,18 @@ Component({
     currentTabIndex: 0,
   },
   methods: {
-    handleTabChange(evt) {
-      const { index } = evt.currentTarget.dataset
-      if (index === this.data.currentTabIndex) {
-        return
-      }
-      this.setData({
-        currentTabIndex: index,
-      })
-      this.triggerEvent('change', { index })
-    },
+    handleTabChange: throttle(
+      function (evt) {
+        const { index } = evt.currentTarget.dataset
+        if (index === this.data.currentTabIndex) {
+          return
+        }
+        this.setData({
+          currentTabIndex: index,
+        })
+        this.triggerEvent('change', { index })
+      },
+    ),
 
     handleTouchMove(evt) {
       const direction = evt.direction // 0/-1/1
