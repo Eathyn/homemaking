@@ -22,3 +22,7 @@
   left: 20rpx;
   color: #FFFFFF;
 }
+
+.service-preview {
+  margin-top: 30rpx;
+}

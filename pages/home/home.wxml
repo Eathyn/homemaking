@@ -29,6 +29,7 @@
 
     <view slot="panel">
       <view
+        class="service-preview"
         wx:for="{{ serviceList }}"
         wx:key="index"
       >
