@@ -11,7 +11,7 @@ class Service {
    * @param category_id 分类ID
    * @param type 服务类型
    */
-  async getServiceList( category_id = null, type = null) {
+  async getServiceList(category_id = null, type = null) {
     if (!this.hasMoreData) {
       return this.data
     }
