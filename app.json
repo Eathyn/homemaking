@@ -48,6 +48,7 @@
   "usingComponents": {
     "i-icon": "/components/icon/icon",
     "i-tabs": "/components/tabs/tabs",
-    "i-service-preview": "/components/service-preview/service-preview"
+    "i-service-preview": "/components/service-preview/service-preview",
+    "i-show-status": "/components/show-status/show-status"
   }
 }
