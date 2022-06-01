@@ -1,3 +1,6 @@
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{ loading }}" />
+
 <view class="container">
   <i-tabs
     tabs="{{ tabs }}"

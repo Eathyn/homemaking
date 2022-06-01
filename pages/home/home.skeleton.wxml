@@ -1,0 +1,230 @@
+<!--
+此文件为开发者工具生成，生成时间: 2022/6/1 上午11:41:21
+使用方法：
+在 D:\code-courses\mock-498\pages\home\home.wxml 引入模板
+
+```
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 D:\code-courses\mock-498\pages\home\home.wxss 中引入样式
+```
+@import "./home.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view is="components/tabs/tabs">
+        <view class="tabs--container">
+          <view class="tabs--tabs">
+            <view class="tabs--tab-item" data-index="0">
+              <view class="tabs--tab-label tabs--active-tab sk-transparent sk-text-14-2857-770 sk-text">
+                全部服务
+              </view>
+              <view class="tabs--divider"></view>
+            </view>
+            <view class="tabs--tab-item" data-index="1">
+              <view class="tabs--tab-label sk-transparent sk-text-14-2857-14 sk-text">
+                在提供
+              </view>
+            </view>
+            <view class="tabs--tab-item" data-index="2">
+              <view class="tabs--tab-label sk-transparent sk-text-14-2857-593 sk-text">
+                正在找
+              </view>
+            </view>
+          </view>
+          <view>
+            <view class="category">
+              <image style="width: 80%; height: 75px" class="sk-image"></image>
+            </view>
+          </view>
+          <view class="tabs--tab-panel">
+            <view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-571 sk-text">在提供</view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-89 sk-text">上门洗车服务</view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-420 sk-text">汽修</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--publisher">
+                          <view class="preview--publisher-avatar">
+                            <image class="preview--publisher-avatar-image sk-image"></image>
+                          </view>
+                          <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-960 sk-text">浅浅笑颜🎶</view>
+                        </view>
+                        <view class="preview--score">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-star sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #FBC02D;"></view>
+                          </view>
+                          <view class="preview--score-number sk-transparent sk-opacity">0</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-254 sk-text">2022-05-31 15:23:48</view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>500.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-10 sk-text">已售 0</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-28 sk-text">在提供</view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-610 sk-text">定期清洗，日常保洁服务</view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-174 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--publisher">
+                          <view class="preview--publisher-avatar">
+                            <image class="preview--publisher-avatar-image sk-image"></image>
+                          </view>
+                          <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-745 sk-text">Rin</view>
+                        </view>
+                        <view class="preview--score">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-star sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #FBC02D;"></view>
+                          </view>
+                          <view class="preview--score-number sk-transparent sk-opacity">0</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-858 sk-text">2022-05-26 20:38:33</view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>888.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-711 sk-text">已售 0</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-869 sk-text">在提供</view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-958 sk-text">接送孩子上学</view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-640 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--publisher">
+                          <view class="preview--publisher-avatar">
+                            <image class="preview--publisher-avatar-image sk-image"></image>
+                          </view>
+                          <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-929 sk-text">大瑜</view>
+                        </view>
+                        <view class="preview--score">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-star sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #FBC02D;"></view>
+                          </view>
+                          <view class="preview--score-number sk-transparent sk-opacity">5</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-360 sk-text">2022-05-24 01:18:10</view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>100.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-837 sk-text">已售 2</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <view class="preview--type-tag sk-transparent sk-text-14-2857-215 sk-text">正在找</view>
+                      <image class="preview--cover-image sk-image" mode="aspectFill"></image>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--service-title sk-transparent sk-text-14-2857-328 sk-text">找整理归纳师</view>
+                        <view class="preview--category">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-biaoqian sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #f27013;"></view>
+                          </view>
+                          <view class="preview--category-text sk-transparent sk-text-14-2857-73 sk-text">保洁</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--publisher">
+                          <view class="preview--publisher-avatar">
+                            <image class="preview--publisher-avatar-image sk-image"></image>
+                          </view>
+                          <view class="preview--publisher-nickname sk-transparent sk-text-14-2857-701 sk-text">大瑜</view>
+                        </view>
+                        <view class="preview--score">
+                          <view is="components/icon/icon">
+                            <view class="icon--iconfont icon--icon-star sk-pseudo sk-pseudo-circle" style="font-size: 16px; color: #FBC02D;"></view>
+                          </view>
+                          <view class="preview--score-number sk-transparent sk-opacity">0</view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--create-time sk-transparent sk-text-14-2857-929 sk-text">2022-05-23 23:04:48</view>
+                      </view>
+                      <view class="preview--row preview--row-last">
+                        <view class="preview--price sk-transparent">
+                          <text class="preview--label sk-transparent sk-opacity">￥</text>5000.00
+                        </view>
+                        <view class="preview--sales sk-transparent sk-text-14-2857-165 sk-text">已售 0</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

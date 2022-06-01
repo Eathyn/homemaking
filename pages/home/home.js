@@ -10,11 +10,15 @@ Page({
     categoryList: [],
     tabIndex: 0,
     categoryId: 0,
+    loading: true,
   },
 
-  onLoad() {
-    this._getServiceList()
-    this._getCategoryListWithAll()
+  async onLoad() {
+    await this._getServiceList()
+    await this._getCategoryListWithAll()
+    this.setData({
+      loading: false,
+    })
   },
 
   async onPullDownRefresh() {
