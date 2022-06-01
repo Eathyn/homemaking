@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
 }
 
 .tabs {
@@ -9,8 +9,9 @@
   padding: 30rpx 0;
   background-color: #FFFFFF;
   align-items: center;
-  height: 126rpx;
-  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 
 .tab-item {
