@@ -6,7 +6,7 @@
 
 .tabs {
   display: flex;
-  padding: 30prx 0;
+  padding: 30rpx 0;
   background-color: #FFFFFF;
   align-items: center;
   height: 126rpx;
