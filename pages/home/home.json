@@ -1,4 +1,6 @@
 {
+  "navigationBarBackgroundColor": "#f3d066",
+  "navigationBarTitleText": "服务广场",
   "usingComponents": {},
   "enablePullDownRefresh": true
 }
