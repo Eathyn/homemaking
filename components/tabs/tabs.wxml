@@ -30,6 +30,6 @@
     bind:touchstart="{{ touch.handleTouchstart }}"
     bind:touchend="{{ touch.handleTouchend }}"
   >
-    <slot name="panel"></slot>
+    <slot name="panel" />
   </view>
 </view>
