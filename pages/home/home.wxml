@@ -33,7 +33,11 @@
         wx:for="{{ serviceList }}"
         wx:key="index"
       >
-        <i-service-preview service="{{ item }}"/>
+        <i-service-preview
+          service="{{ item }}"
+          bind:tap="handleSelectService"
+          data-service="{{ item }}"
+        />
       </view>
       <i-show-status
         show="{{ serviceList.length < 1 }}"

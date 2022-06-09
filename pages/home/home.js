@@ -63,5 +63,12 @@ Page({
       this.data.categoryId = categoryId
       this._getServiceList()
     },
-  )
+  ),
+
+  handleSelectService(evt) {
+    const service = evt.currentTarget.dataset.service
+    wx.navigateTo({
+      url: `/pages/service-detail/service-detail?service_id=${service.id}`
+    })
+  },
 });
