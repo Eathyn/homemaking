@@ -1,11 +1,7 @@
 import Http from '../utils/http'
+import Base from './base'
 
-class Service {
-  page = 1
-  count = 10
-  data = []
-  hasMoreData = true
-
+class Service extends Base {
   /**
    * 分页获取服务列表
    * @param category_id 分类ID
@@ -28,14 +24,6 @@ class Service {
     this.hasMoreData = this.page !== serviceList.last_page
     this.page++
     return this.data
-  }
-
-  reset() {
-    this.page = 1
-    this.count = 10
-    this.data = []
-    this.hasMoreData = true
-    return this
   }
 }
 
