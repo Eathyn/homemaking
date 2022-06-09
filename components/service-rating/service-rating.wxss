@@ -1,0 +1,36 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.score, .content, .illustration {
+	margin-top: 20rpx;
+}
+
+.score {
+	display: flex;
+	align-items: center;
+}
+
+.create-time {
+	color: #888888;
+}
+
+.illustration {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 30rpx;
+}
+
+.illustration-image {
+	width: 200rpx;
+	height: 200rpx;
+}

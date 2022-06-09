@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="row">
+    <view class="author">
+      <i-avatar
+        src="{{ rating.author.avatar }}"
+        text="{{ rating.author.nickname }}"
+        shape="circle"
+        size="60"
+      />
+    </view>
+    <view class="create-time">{{ rating.create_time }}</view>
+  </view>
+  <view class="score">
+    <view class="score-desc">评分：</view>
+    <i-rating
+      class="score-rating"
+      count="{{ 5 }}"
+      selected="{{ rating.score }}"
+      size="36"
+    />
+  </view>
+  <view class="content">{{ rating.content }}</view>
+  <view
+    class="illustration"
+    wx:if="{{ rating.illustration.length > 0 }}"
+  >
+    <block
+      wx:for="{{ rating.illustration }}"
+      wx:key="index"
+    >
+      <image
+        class="illustration-image"
+        src="{{ item }}"
+        mode="aspectFill"
+        bind:tap="handlePreview"
+        data-index="{{ index }}"
+      >
+      </image>
+    </block>
+  </view>
+</view>
