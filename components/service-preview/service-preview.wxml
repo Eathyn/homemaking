@@ -16,16 +16,17 @@
       </view>
     </view>
     <view class="row">
-      <view class="publisher">
-        <view class="publisher-avatar">
-          <image
-            class="publisher-avatar-image"
-            src="{{ service.publisher.avatar }}"
-          ></image>
-        </view>
-        <view class="publisher-nickname">{{ service.publisher.nickname }}</view>
-      </view>
-      <view class="score">
+      <i-avatar
+        shape="circle"
+        src="{{ service.publisher.avatar }}"
+        text="{{ service.publisher.nickname }}"
+        size="40"
+        fontSize="22"
+      />
+      <view
+        class="score"
+        wx:if="{{ service.type === serviceTypeEnum.PROVIDE }}"
+      >
         <i-icon name="star"></i-icon>
         <view class="score-number">{{ service.score }}</view>
       </view>
