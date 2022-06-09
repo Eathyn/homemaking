@@ -38,7 +38,12 @@
       <view class="price">
         <text class="label">￥</text>{{ service.price }}
       </view>
-      <view class="sales">已售 {{ service.sales_volume }}</view>
+      <view
+        class="sales"
+        wx:if="{{ service.type === serviceTypeEnum.PROVIDE }}"
+      >
+        已售 {{ service.sales_volume }}
+      </view>
     </view>
   </view>
 </view>
