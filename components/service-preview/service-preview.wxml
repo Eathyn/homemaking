@@ -1,6 +1,6 @@
 <view class="container">
   <view class="left">
-    <view class="type-tag">{{ service.type === 1 ? '在提供' : '正在找' }}</view>
+    <view class="type-tag">{{ service.type === serviceTypeEnum.PROVIDE ? '在提供' : '正在找' }}</view>
     <image
       class="cover-image"
       src="{{ service.cover_image.path }}"
