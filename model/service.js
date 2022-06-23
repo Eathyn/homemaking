@@ -25,6 +25,22 @@ class Service extends Base {
     this.page++
     return this.data
   }
+
+  static getServiceById(serviceId) {
+    return Http.request({
+      url: `v1/service/${serviceId}`,
+    })
+  }
+
+  static updateServiceStatus(serviceId, action) {
+    return Http.request({
+      url: `v1/service/${serviceId}`,
+      data: {
+        action,
+      },
+      method: 'POST',
+    })
+  }
 }
 
 export default Service

@@ -18,7 +18,10 @@ Page({
     try {
       await User.login()
       await User.updateUserInfo(res.userInfo)
-      wx.hideLoading()
+      const events = this.getOpenerEventChannel()
+      console.log('events: ', events)
+      events.emit('login')
+      wx.navigateBack()
     } catch (err) {
       wx.showModal({
         title: '注意',
@@ -26,12 +29,13 @@ Page({
         showCancel: false,
       })
       console.error(err)
-    } finally {
-      wx.navigateBack()
     }
+    wx.hideLoading()
   },
 
-  handleToHome(evt) {
-
+  handleToHome() {
+    wx.switchTab({
+      url: '/pages/home/home'
+    })
   },
 })
