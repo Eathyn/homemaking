@@ -3,7 +3,7 @@
     <picker
       range="{{ typeList }}"
       range-key="name"
-      bind:change="handlePickerChange"
+      bind:change="handleTypeChange"
     >
       <view wx:if="{{ typePickerIndex !== null }}">{{ typeList[typePickerIndex].name }}</view>
       <view
