@@ -1,3 +1,5 @@
+import { getEventParam } from '../../utils/utils'
+
 Component({
   properties: {
     // 默认展示的图片文件
@@ -57,5 +59,39 @@ Component({
     },
     _files: [],
   },
-  methods: {}
+  methods: {
+    handlePreview(evt) {
+      const index = getEventParam(evt, 'index')
+      const urls = this.data._files.map((item) => item.path)
+      wx.previewImage({
+        urls,
+        current: urls[index],
+      })
+    },
+
+    handleDelete(evt) {
+      const index = getEventParam(evt, 'index')
+      const deleted = this.data._files.splice(index, 1)
+      // 需要数据绑定
+      this.setData({
+        _files: this.data._files,
+      })
+      this.triggerEvent('delete', { index, item: deleted[0] })
+    },
+
+    async handleChooseImage() {
+      const res = await wx.chooseMedia({
+        mediaType: ['image'],
+        count: this.data.maxCount,
+        sourceType: this.data.sourceType,
+        sizeType: this.data.sizeType,
+      })
+      this.triggerEvent('choose', { files: res.tempFiles })
+      const _files = this._filesFilter(res.tempFiles)
+    },
+
+    _filesFilter(tempFiles) {
+
+    }
+  },
 })
