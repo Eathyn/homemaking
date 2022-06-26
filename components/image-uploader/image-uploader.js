@@ -1,4 +1,5 @@
 import { getEventParam } from '../../utils/utils'
+import FileUploader from '../../utils/file-uploader'
 
 Component({
   properties: {
@@ -12,7 +13,7 @@ Component({
       type: Number,
       value: 1
     },
-    // 单个图片文件大小限制，单位 M
+    // 单个图片文件大小限制，单位 MB
     size: {
       type: Number,
       value: 2
@@ -88,10 +89,57 @@ Component({
       })
       this.triggerEvent('choose', { files: res.tempFiles })
       const _files = this._filesFilter(res.tempFiles)
+      this.setData({
+        _files,
+      })
+      const uploadTask = _files.filter((item) => item.status === this.data.uploadStatusEnum.UPLOADING)
+      await this._executeUpload(uploadTask)
     },
 
     _filesFilter(tempFiles) {
+      const res = []
+      tempFiles.forEach((item, index) => {
+        let error = ''
+        if (item.size > (1024 * 1024 * this.data.size)) {
+          error = `图片大小不能超过${this.data.size}M`
+          this.triggerEvent('validatefail', { item, error })
+        }
+        const length = this.data._files.length
+        res.push({
+          id: null,
+          key: `${index}${length}`, // 如果没有 length 那么 key 可能会重复。例如用户多次选择 每次选择一张图片
+          path: item.path,
+          status: error ? this.data.uploadStatusEnum.ERROR : this.data.uploadStatusEnum.UPLOADING,
+          error: error,
+        })
+      })
+      // 用户可能多次选择 每次选择一张图片 因此需要把之前选择的和本次选择的进行合并
+      return this.data._files.concat(res)
+    },
 
-    }
+    async _executeUpload(updateTask) {
+      const success = []
+      for (const file of updateTask) {
+        try {
+          const res = await FileUploader.upload(file.path, file.key)
+          const { id, path } = res[0]
+          file.id = id
+          file.url = path
+          file.status = this.data.uploadStatusEnum.SUCCESS
+          this.data._files[file.key] = file
+          success.push(file)
+        } catch (error) {
+          file.status = this.data.uploadStatusEnum.ERROR
+          file.error = error
+          this.triggerEvent('uploadfail', { file, error })
+        }
+      }
+      this.setData({
+        _files: this.data._files,
+      })
+      if (success.length) {
+        this.triggerEvent('uploadsuccess', { file: success })
+      }
+    },
   },
 })
