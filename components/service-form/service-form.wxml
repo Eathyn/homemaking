@@ -33,7 +33,14 @@
       <view wx:else>请选择分类</view>
     </picker>
   </mp-cell>
-  <mp-cell title="封面图"></mp-cell>
+  <mp-cell title="封面图">
+    <i-image-uploader
+      files="{{ files }}"
+      maxCount="{{ 1 }}"
+      bind:uploadsuccess="handleUploadSuccess"
+      bind:hidepage="handleHidePage"
+    />
+  </mp-cell>
   <mp-cell title="服务描述">
     <textarea
       class="desc-textarea"

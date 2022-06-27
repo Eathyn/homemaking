@@ -6,6 +6,14 @@ Component({
   properties: {
     form: Object,
   },
+  observers: {
+    form(value) {
+      if (!value) {
+        return
+      }
+      this._init()
+    },
+  },
   data: {
     typeList: [
       {
@@ -32,11 +40,11 @@ Component({
       price: '',
     },
   },
-  lifetimes: {
-    attached() {
-      this._init()
-    }
-  },
+  // lifetimes: {
+  //   attached() {
+  //     this._init()
+  //   }
+  // },
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex((item) => this.data.form.type === item.id)
@@ -47,6 +55,7 @@ Component({
         typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
         categoryList,
         categoryPickerIndex: categoryPickerIndex !== -1 ? categoryPickerIndex : null,
+        files: this.data.form.cover_image ? [this.data.form.cover_image] : [],
         formData: {
           type: this.data.form.type,
           title: this.data.form.title,
@@ -63,6 +72,7 @@ Component({
 
     submit() {
       console.log(this.data.formData)
+      // this.triggerEvent('submit', { formData: this.data.formData })
     },
 
     handleTypeChange(evt) {
@@ -108,6 +118,18 @@ Component({
       this.setData({
         ['formData.end_date']: endDate,
       })
+    },
+
+    handleUploadSuccess(evt) {
+      const files = getEventParam(evt, 'files')
+      const { id } = files[0]
+      this.setData({
+        ['formData.cover_image_id']: id,
+      })
+    },
+
+    handleHidePage() {
+
     },
   }
 })

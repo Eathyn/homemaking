@@ -35,7 +35,7 @@
     </view>
     <view
       class="error"
-      wx:if="{{ item.status = uploadStatusEnum.ERROR }}"
+      wx:if="{{ item.status === uploadStatusEnum.ERROR }}"
     >
       {{ item.error || '上传失败' }}
     </view>

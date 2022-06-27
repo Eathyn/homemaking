@@ -41,6 +41,14 @@ class Service extends Base {
       method: 'POST',
     })
   }
+
+  static editService(serviceId, formData) {
+    return Http.request({
+      url: `v1/service/${serviceId}`,
+      data: formData,
+      method: 'PUT',
+    })
+  }
 }
 
 export default Service

@@ -108,7 +108,7 @@ Component({
         res.push({
           id: null,
           key: `${index}${length}`, // 如果没有 length 那么 key 可能会重复。例如用户多次选择 每次选择一张图片
-          path: item.path,
+          path: item.tempFilePath,
           status: error ? this.data.uploadStatusEnum.ERROR : this.data.uploadStatusEnum.UPLOADING,
           error: error,
         })
@@ -138,7 +138,7 @@ Component({
         _files: this.data._files,
       })
       if (success.length) {
-        this.triggerEvent('uploadsuccess', { file: success })
+        this.triggerEvent('uploadsuccess', { files: success })
       }
     },
   },

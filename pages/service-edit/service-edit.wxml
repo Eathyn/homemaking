@@ -1,0 +1,6 @@
+<view class="container">
+  <i-service-form
+    form="{{ formData }}"
+    bind:submit="handleSubmit"
+  />
+</view>
