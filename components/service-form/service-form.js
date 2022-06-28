@@ -72,7 +72,7 @@ Component({
 
     submit() {
       console.log(this.data.formData)
-      // this.triggerEvent('submit', { formData: this.data.formData })
+      this.triggerEvent('submit', { formData: this.data.formData })
     },
 
     handleTypeChange(evt) {
