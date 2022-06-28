@@ -1,5 +1,19 @@
-<mp-form>
-  <mp-cell title="发布类型">
+<mp-toptips
+  show="{{ error }}"
+  type="error"
+  msg="{{ error }}"
+/>
+
+<mp-form
+  id="form"
+  models="{{ formData }}"
+  rules="{{ rules }}"
+>
+  <mp-cell
+    title="发布类型"
+    prop="type"
+    show-error
+  >
     <picker
       range="{{ typeList }}"
       range-key="name"
@@ -14,7 +28,11 @@
       </view>
     </picker>
   </mp-cell>
-  <mp-cell title="标题">
+  <mp-cell
+    title="标题"
+    prop="title"
+    show-error
+  >
     <input
       value="{{ formData.title }}"
       placeholder="内容长度不少于 5 个字"
@@ -23,7 +41,11 @@
     >
     </input>
   </mp-cell>
-  <mp-cell title="所属分类">
+  <mp-cell
+    title="所属分类"
+    prop="category_id"
+    show-error
+  >
     <picker
       range="{{ categoryList }}"
       range-key="name"
@@ -33,7 +55,11 @@
       <view wx:else>请选择分类</view>
     </picker>
   </mp-cell>
-  <mp-cell title="封面图">
+  <mp-cell
+    title="封面图"
+    prop="cover_image_id"
+    show-error
+  >
     <i-image-uploader
       files="{{ files }}"
       maxCount="{{ 1 }}"
@@ -41,7 +67,11 @@
       bind:hidepage="handleHidePage"
     />
   </mp-cell>
-  <mp-cell title="服务描述">
+  <mp-cell
+    title="服务描述"
+    prop="description"
+    show-error
+  >
     <textarea
       class="desc-textarea"
       bind:input="handleInput"
@@ -58,7 +88,11 @@
     >
     </switch>
   </mp-cell>
-  <mp-cell title="开始日期">
+  <mp-cell
+    title="开始日期"
+    prop="begin_date"
+    show-error
+  >
     <picker
       mode="date"
       value="{{ formData.begin_date }}"
@@ -68,7 +102,11 @@
       <view wx:else>服务内容有效期开始日期</view>
     </picker>
   </mp-cell>
-  <mp-cell title="结束日期">
+  <mp-cell
+    title="结束日期"
+    prop="end_date"
+    show-error
+  >
     <picker
       mode="date"
       value="{{ formData.end_date }}"
@@ -83,7 +121,11 @@
       </view>
     </picker>
   </mp-cell>
-  <mp-cell title="价格">
+  <mp-cell
+    title="价格"
+    prop="price"
+    show-error
+  >
     <input
       value="{{ formData.price }}"
       bind:input="handleInput"
