@@ -5,6 +5,7 @@
 />
 
 <mp-form
+  wx:if="{{ showForm }}"
   id="form"
   models="{{ formData }}"
   rules="{{ rules }}"

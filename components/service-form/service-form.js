@@ -108,6 +108,17 @@ Component({
       }
     ],
     error: null,
+    showForm: true,
+  },
+  pageLifetimes: {
+    show() {
+      this._init(this.data.form)
+    },
+    hide() {
+      this.setData({
+        showForm: false,
+      })
+    },
   },
   // lifetimes: {
   //   attached() {
@@ -123,6 +134,7 @@ Component({
           (item) => this.data.form.category_id === item.id)
 
       this.setData({
+        showForm: true,
         typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
         categoryList,
         categoryPickerIndex: categoryPickerIndex !== -1
