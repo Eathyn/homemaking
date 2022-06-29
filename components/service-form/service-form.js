@@ -110,6 +110,7 @@ Component({
     error: null,
     showForm: true,
     resetForm: true,
+    serviceTypeEnum: serviceType,
   },
   pageLifetimes: {
     show() {
