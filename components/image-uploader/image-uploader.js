@@ -62,6 +62,7 @@ Component({
   },
   methods: {
     handlePreview(evt) {
+      this.triggerEvent('hidepage')
       const index = getEventParam(evt, 'index')
       const urls = this.data._files.map((item) => item.path)
       wx.previewImage({
@@ -81,6 +82,7 @@ Component({
     },
 
     async handleChooseImage() {
+      this.triggerEvent('hidepage')
       const res = await wx.chooseMedia({
         mediaType: ['image'],
         count: this.data.maxCount,

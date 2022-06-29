@@ -109,15 +109,23 @@ Component({
     ],
     error: null,
     showForm: true,
+    resetForm: true,
   },
   pageLifetimes: {
     show() {
-      this._init(this.data.form)
+      console.log('show')
+      if (this.data.resetForm) {
+        this._init(this.data.form)
+      }
+      this.data.resetForm = true
     },
     hide() {
-      this.setData({
-        showForm: false,
-      })
+      console.log('hide')
+      if (this.data.resetForm) {
+        this.setData({
+          showForm: false,
+        })
+      }
     },
   },
   // lifetimes: {
@@ -224,7 +232,7 @@ Component({
     },
 
     handleHidePage() {
-
+      this.data.resetForm = false
     }
   }
 })
