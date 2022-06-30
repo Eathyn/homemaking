@@ -1,0 +1,18 @@
+{
+  "name": "mock-498",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "tim-upload-plugin": "^1.0.4",
+    "tim-wx-sdk-ws": "^2.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
