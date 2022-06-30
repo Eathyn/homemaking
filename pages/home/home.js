@@ -15,7 +15,7 @@ Page({
   },
 
   async onLoad() {
-    new Tim()
+    Tim.getInstance()
     await this._getServiceList()
     await this._getCategoryListWithAll()
     this.setData({
