@@ -1,6 +1,8 @@
 import TIM from 'tim-wx-sdk-ws'
 import TIMUploadPlugin from 'tim-upload-plugin'
 import timConfig from '../config/tim'
+import User from './user'
+import genTestUserSig from '../lib/tim/generate-test-usersig'
 
 class Tim {
   /**
@@ -60,6 +62,15 @@ class Tim {
 
   getSDK() {
     return this._SDKInstance
+  }
+
+  login() {
+    const userInfo = User.getUserInfoByLocal()
+    const textUserSig = genTestUserSig(userInfo.id.toString())
+    this._SDKInstance.login({
+      userID: userInfo.id.toString(),
+      userSig: textUserSig.userSig,
+    })
   }
 }
 
