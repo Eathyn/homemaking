@@ -1,6 +1,6 @@
 // import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import Tim from '../../model/tim'
-
+import TIM from 'tim-wx-sdk-ws'
 
 Page({
   data: {
@@ -21,6 +21,9 @@ Page({
 
     const userId = 250000
     Tim.getInstance().login()
-    Tim.getInstance().getMessageList(userId)
+    Tim.getInstance().getSDK().on(TIM.EVENT.SDK_READY, async function() {
+      const res = await Tim.getInstance().getMessageList(userId)
+      console.log('res: ', res)
+    })
   },
 })
