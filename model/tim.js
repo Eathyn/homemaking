@@ -76,6 +76,14 @@ class Tim {
   logout() {
     this._SDKInstance.logout()
   }
+
+  // 消息标记为已读
+  async setMessageRead(targetUserId) {
+    const res = await this._SDKInstance.setMessageRead({
+      conversationID: `C2C${targetUserId}`
+    })
+    return res.data
+  }
 }
 
 export default Tim
