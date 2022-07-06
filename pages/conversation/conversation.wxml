@@ -2,7 +2,10 @@
   class="container"
   wx:if="{{ sdkReady }}"
 >
-  <i-conversation-window></i-conversation-window>
+  <i-conversation-window
+    targetUserId="{{ targetUserId }}"
+    service="{{ service }}"
+  />
 </view>
 <view wx:else>
   <i-show-status

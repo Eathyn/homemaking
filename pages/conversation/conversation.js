@@ -2,15 +2,21 @@ import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { timStore } from '../../store/tim'
 
 Page({
-  data: {},
-  onLoad() {
+  data: {
+    targetUserId: null,
+    service: null,
+  },
+  onLoad(options) {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
-      fields: ['sdkReady', 'messageList'],
-      actions: ['getMessageList', 'setTargetUserId'],
+      fields: ['sdkReady'],
     })
-    this.setTargetUserId('user-007')
-    this.getMessageList()
+    const { targetUserId, service } = options
+    this.setData({
+      // targetUserId,
+      targetUserId: 'user-007', // 测试
+      service,
+    })
   },
 
   onUnload() {
@@ -18,6 +24,8 @@ Page({
   },
 
   handleLogin() {
-
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
 })

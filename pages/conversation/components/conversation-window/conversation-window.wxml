@@ -4,7 +4,9 @@
       wx:for="{{ messageList }}"
       wx:key="index"
     >
-      <i-message></i-message>
+      <i-message
+        message="{{ item }}"
+      />
     </view>
   </view>
 

@@ -16,7 +16,7 @@ Page({
     this.storeBindings.destroyStoreBindings()
   },
 
-  async handleLogin(evt) {
+  async handleLogin() {
     const res = await wx.getUserProfile({
       desc: '完善用户信息',
     })
