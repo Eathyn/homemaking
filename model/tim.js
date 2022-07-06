@@ -72,6 +72,10 @@ class Tim {
       userSig: textUserSig.userSig,
     })
   }
+
+  logout() {
+    this._SDKInstance.logout()
+  }
 }
 
 export default Tim

@@ -7,6 +7,8 @@
     "lib": "lib"
   },
   "dependencies": {
+    "mobx-miniprogram": "^4.13.2",
+    "mobx-miniprogram-bindings": "^2.1.5",
     "tim-upload-plugin": "^1.0.4",
     "tim-wx-sdk-ws": "^2.12.0"
   },
@@ -14,9 +16,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "mobx-miniprogram": "^4.13.2",
-    "mobx-miniprogram-bindings": "^2.1.5"
-  }
+  "license": "ISC"
 }

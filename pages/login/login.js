@@ -1,10 +1,19 @@
 import User from '../../model/user'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
+import { timStore } from '../../store/tim'
 
 Page({
   data: {},
 
-  onLoad: function(options) {
+  onLoad: function() {
+    this.storeBindings = createStoreBindings(this, {
+      store: timStore,
+      actions: { timLogin: 'login' },
+    })
+  },
 
+  onUnload() {
+    this.storeBindings.destroyStoreBindings()
   },
 
   async handleLogin(evt) {
@@ -18,8 +27,8 @@ Page({
     try {
       await User.login()
       await User.updateUserInfo(res.userInfo)
+      this.timLogin()
       const events = this.getOpenerEventChannel()
-      console.log('events: ', events)
       events.emit('login')
       wx.navigateBack()
     } catch (err) {

@@ -10,11 +10,15 @@ export const timStore = observable({
     Tim.getInstance().login()
   }),
 
+  logout: action(function() {
+    Tim.getInstance().logout()
+  }),
+
   _runListener() {
     const sdk = Tim.getInstance().getSDK()
     sdk.on(TIM.EVENT.SDK_READY, this._handleSDKReady, this)
     sdk.on(TIM.EVENT.SDK_NOT_READY, this._handleSDKNotReady, this)
-    sdk.on(TIM.EVENT.KICKEDOUT, this._handleSDKNotReady, this)
+    sdk.on(TIM.EVENT.KICKED_OUT, this._handleSDKNotReady, this)
   },
   _handleSDKReady() {
     this.sdkReady = true
