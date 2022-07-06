@@ -6,8 +6,11 @@ Page({
   onLoad() {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
-      fields: ['sdkReady'],
+      fields: ['sdkReady', 'messageList'],
+      actions: ['getMessageList', 'setTargetUserId'],
     })
+    this.setTargetUserId('user-007')
+    this.getMessageList()
   },
 
   onUnload() {

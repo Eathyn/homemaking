@@ -47,7 +47,7 @@ export const timStore = observable({
 
   async _handleMessageReceived(evt) {
     if (!this._targetUserId) {
-      throw Error('未指定用户目标ID')
+      return
     }
     const currentConversationMessage = evt.data
       .filter((item) => item.from === this._targetUserId)
