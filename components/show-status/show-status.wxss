@@ -5,3 +5,7 @@
   justify-content: center;
   color: #888888;
 }
+
+.extend {
+  margin-top: 30rpx;
+}

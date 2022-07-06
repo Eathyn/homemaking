@@ -4,4 +4,7 @@
   wx:if="{{ show }}"
 >
   {{ content }}
+  <view class="extend">
+    <slot />
+  </view>
 </view>

@@ -16,4 +16,8 @@ Page({
   onUnload() {
     this.storeBindings.destroyStoreBindings()
   },
+
+  handleLogin() {
+
+  },
 })
