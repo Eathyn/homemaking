@@ -46,10 +46,10 @@ class Tim {
       nextReqMessageID: this._nextReqMessageID,
       count: count > 15 ? 15 : count
     })
-    const { _nextReqMessageID, isCompleted, _messageList } = res.data
-    this._nextReqMessageID = _nextReqMessageID
+    const { nextReqMessageID, isCompleted, messageList } = res.data
+    this._nextReqMessageID = nextReqMessageID
     this.isCompleted = isCompleted
-    this._messageList = _messageList
+    this._messageList = messageList
     return this._messageList
   }
 
