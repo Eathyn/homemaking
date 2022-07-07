@@ -29,7 +29,7 @@
         fixed
         hold-keyboard
         placeholder="请输入"
-        bind:tap="handleInput"
+        bind:input="handleInput"
       >
       </textarea>
       <i-button

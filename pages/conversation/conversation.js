@@ -1,5 +1,6 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { timStore } from '../../store/tim'
+import Tim from "../../model/tim";
 
 Page({
   data: {
@@ -27,5 +28,11 @@ Page({
     wx.navigateTo({
       url: '/pages/login/login',
     })
+  },
+
+  handleSendMessage(evt) {
+    const { type, content } = evt.detail
+    const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId)
+    Tim.getInstance().sendMessage(message)
   },
 })

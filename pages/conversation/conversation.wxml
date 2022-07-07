@@ -5,6 +5,7 @@
   <i-conversation-window
     targetUserId="{{ targetUserId }}"
     service="{{ service }}"
+    bind:sendmessage="handleSendMessage"
   />
 </view>
 <view wx:else>
