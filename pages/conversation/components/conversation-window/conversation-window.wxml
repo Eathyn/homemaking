@@ -6,23 +6,40 @@
     >
       <i-message
         message="{{ item }}"
+        bind:send="handleSendLink"
+        bind:select="handleSelect"
       />
     </view>
   </view>
 
   <view class="action-bar">
-    <i-icon
-      name="picture"
-      bind:tap="handleSendImage"
-    />
-    <textarea bind:tap="handleInput"></textarea>
-    <i-button
-      shape="circle"
-      size="mini"
-      bind:tap="handleSend"
-    >
-      发送
-    </i-button>
+    <view class="inner-container">
+      <i-icon
+        name="picture"
+        size="60"
+        color="#333333"
+        bind:tap="handleSendImage"
+      />
+      <textarea
+        value="{{ text }}"
+        class="conversation-textarea"
+        auto-height
+        cursor-spacing="{{ 30 }}"
+        disable-default-padding
+        fixed
+        hold-keyboard
+        placeholder="请输入"
+        bind:tap="handleInput"
+      >
+      </textarea>
+      <i-button
+        shape="circle"
+        size="mini"
+        bind:tap="handleSend"
+      >
+        发送
+      </i-button>
+    </view>
     <i-safe-area area="bottom" />
   </view>
 </view>
