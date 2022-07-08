@@ -40,9 +40,8 @@ Component({
     },
 
     async handleSendImage() {
-      const chooseImage = await wx.chooseMedia({
+      const chooseImage = await wx.chooseImage({
         count: 1,
-        mediaType: ['image'],
         sizeType: ['compressed'],
       })
       this.triggerEvent('sendmessage', {
