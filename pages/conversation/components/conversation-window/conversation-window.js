@@ -61,7 +61,7 @@ Component({
         return
       }
       this.triggerEvent('sendmessage', {
-        type: TIM.TYPES.MSG_IMAGE,
+        type: TIM.TYPES.MSG_TEXT,
         content: text,
       })
       this.setData({
