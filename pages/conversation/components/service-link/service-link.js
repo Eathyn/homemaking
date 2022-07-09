@@ -2,12 +2,12 @@ Component({
   properties: {
     flow: String,
     service: String,
+    extension: String,
   },
   lifetimes: {
     attached() {
       this.setData({
-        // _service: JSON.parse(this.data.service)
-        _service: this.data.service,
+        _service: JSON.parse(this.data.service)
       })
     }
   },
