@@ -120,6 +120,21 @@ class Tim {
   async sendMessage(message) {
     this._SDKInstance.sendMessage(message)
   }
+
+  async getUserProfile(targetUserId) {
+    const res = await this._SDKInstance.getUserProfile({
+      userIDList: [targetUserId]
+    })
+    return res.data
+  }
+
+  async updateUserProfile(userInfo) {
+    await this._SDKInstance.updateMyProfile({
+      nick: userInfo.nickname,
+      avatar: userInfo.avatar,
+      gender: userInfo.gender === 1 ? TIM.TYPES.GENDER_MALE : TIM.TYPES.GENDER_FEMALE,
+    })
+  }
 }
 
 export default Tim

@@ -2,6 +2,7 @@ import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
 import { timStore } from '../../../../store/tim'
 import { getEventParam } from '../../../../utils/utils'
 import TIM from 'tim-wx-sdk-ws'
+import Tim from '../../../../model/tim'
 
 Component({
   behaviors: [storeBindingsBehavior],
@@ -20,6 +21,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      this._setNavigationBarTitle()
       this._setScrollHeight()
       this.setTargetUserId(this.data.targetUserId)
       this.getMessageList()
@@ -88,6 +90,13 @@ Component({
       const scrollHeight = systemInfo.windowHeight - (systemInfo.screenHeight- systemInfo.safeArea.bottom) - 95
       this.setData({
         scrollHeight,
+      })
+    },
+
+    async _setNavigationBarTitle() {
+      const res = await Tim.getInstance().getUserProfile(this.data.targetUserId)
+      wx.setNavigationBarTitle({
+        title: res[0].nick || '慕慕到家'
       })
     },
   },
