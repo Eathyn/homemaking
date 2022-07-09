@@ -7,6 +7,7 @@ export const timStore = observable({
   messageList: [],
   _targetUserId: null,
   intoView: 0,
+  isCompleted: false,
 
   login: action(function() {
     this._runListener()
@@ -34,6 +35,19 @@ export const timStore = observable({
     this.messageList = await Tim.getInstance().reset().getMessageList(this._targetUserId)
     this.intoView = this.messageList.length - 1
     await Tim.getInstance().setMessageRead(this._targetUserId)
+  }),
+
+  scrollMessageList: action(async function() {
+    const messageList = await Tim.getInstance().getMessageList(this._targetUserId)
+    this.intoView = messageList.length - 2
+    this.isCompleted = Tim.getInstance().isCompleted
+    /**
+     * tips
+     * 1. MobX 中属性的值是 Array 的时候，他是一个被包装过的 Array，并非原生 Array，它是一个响应式对象
+     * 2. 经过包装的 Array 同样具备大多数原生 Array 所具备的方法。
+     * 3. 想把响应式的对象数组变成普通数组，可以调用slice()函数遍历所有对象元素生成一个新的普通数组
+     */
+    this.messageList = messageList.concat(this.messageList.slice())
   }),
 
   _runListener() {

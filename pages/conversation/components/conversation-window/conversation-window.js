@@ -15,8 +15,8 @@ Component({
   },
   storeBindings: {
     store: timStore,
-    fields: ['messageList', 'intoView'],
-    actions: ['getMessageList', 'setTargetUserId'],
+    fields: ['messageList', 'intoView', 'isCompleted'],
+    actions: ['getMessageList', 'setTargetUserId', 'scrollMessageList'],
   },
   lifetimes: {
     attached() {
@@ -71,7 +71,16 @@ Component({
     },
 
     handleScrollToUpper() {
-
+      if (this.data.isCompleted) {
+        return
+      }
+      wx.showLoading({
+        title: '正在加载...',
+        mask: true,
+      })
+      this.scrollMessageList()
+      // 防止用户过快滑动导致频繁加载
+      setTimeout(() => wx.hideLoading(), 1000)
     },
 
     async _setScrollHeight() {
