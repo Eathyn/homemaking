@@ -19,6 +19,7 @@ export const timStore = observable({
     Tim.getInstance().logout()
   }),
 
+  // 消息上屏
   pushMessage: action(function(message) {
     this.messageList = this.messageList.concat([message])
     this.intoView = this.messageList.length - 1
