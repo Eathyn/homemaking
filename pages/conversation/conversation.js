@@ -11,6 +11,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady'],
+      actions: ['pushMessage'],
     })
     const { targetUserId, service } = options
     this.setData({
@@ -33,6 +34,7 @@ Page({
   handleSendMessage(evt) {
     const { type, content } = evt.detail
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId)
+    this.pushMessage(message)
     Tim.getInstance().sendMessage(message)
   },
 })

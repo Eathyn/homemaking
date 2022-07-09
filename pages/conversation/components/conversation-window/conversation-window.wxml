@@ -1,8 +1,17 @@
 <view class="container">
-  <view class="message-list">
+  <scroll-view
+    class="message-list"
+    scroll-y
+    show-scrollbar="{{ false }}"
+    style="height: {{ scrollHeight }}px"
+    enhanced
+    bind:scrolltoupper="handleScrollToUpper"
+    scroll-into-view="message-{{ intoView }}"
+  >
     <view
       wx:for="{{ messageList }}"
       wx:key="index"
+      id="message-{{ index }}"
     >
       <i-message
         message="{{ item }}"
@@ -10,7 +19,7 @@
         bind:select="handleSelect"
       />
     </view>
-  </view>
+  </scroll-view>
 
   <view class="action-bar">
     <view class="inner-container">

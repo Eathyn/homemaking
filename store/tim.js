@@ -6,6 +6,7 @@ export const timStore = observable({
   sdkReady: false,
   messageList: [],
   _targetUserId: null,
+  intoView: 0,
 
   login: action(function() {
     this._runListener()
@@ -14,6 +15,11 @@ export const timStore = observable({
 
   logout: action(function() {
     Tim.getInstance().logout()
+  }),
+
+  pushMessage: action(function(message) {
+    this.messageList = this.messageList.concat([message])
+    this.intoView = this.messageList.length - 1
   }),
 
   setTargetUserId: action(function(targetUserId) {
@@ -26,6 +32,7 @@ export const timStore = observable({
       throw Error('未指定用户目标ID')
     }
     this.messageList = await Tim.getInstance().reset().getMessageList(this._targetUserId)
+    this.intoView = this.messageList.length - 1
     await Tim.getInstance().setMessageRead(this._targetUserId)
   }),
 
@@ -53,6 +60,7 @@ export const timStore = observable({
       .filter((item) => item.from === this._targetUserId)
     if (currentConversationMessage.length) {
       this.messageList = this.messageList.concat(currentConversationMessage)
+      this.intoView = this.messageList.length - 1
       await Tim.getInstance().setMessageRead(this._targetUserId)
     }
   },

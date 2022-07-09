@@ -11,14 +11,16 @@ Component({
   },
   data: {
     text: '',
+    scrollHeight: 0,
   },
   storeBindings: {
     store: timStore,
-    fields: ['messageList'],
+    fields: ['messageList', 'intoView'],
     actions: ['getMessageList', 'setTargetUserId'],
   },
   lifetimes: {
     attached() {
+      this._setScrollHeight()
       this.setTargetUserId(this.data.targetUserId)
       this.getMessageList()
     }
@@ -65,6 +67,18 @@ Component({
       })
       this.setData({
         text: '',
+      })
+    },
+
+    handleScrollToUpper() {
+
+    },
+
+    async _setScrollHeight() {
+      const systemInfo = await wx.getSystemInfo()
+      const scrollHeight = systemInfo.windowHeight - (systemInfo.screenHeight- systemInfo.safeArea.bottom) - 95
+      this.setData({
+        scrollHeight,
       })
     },
   },
