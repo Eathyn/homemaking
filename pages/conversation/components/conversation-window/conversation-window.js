@@ -17,14 +17,23 @@ Component({
   storeBindings: {
     store: timStore,
     fields: ['messageList', 'intoView', 'isCompleted'],
-    actions: ['getMessageList', 'setTargetUserId', 'scrollMessageList'],
+    actions: ['getMessageList', 'setTargetUserId', 'scrollMessageList', 'pushMessage'],
   },
   lifetimes: {
-    attached() {
+    async attached() {
       this._setNavigationBarTitle()
       this._setScrollHeight()
       this.setTargetUserId(this.data.targetUserId)
-      this.getMessageList()
+      await this.getMessageList()
+      if (this.data.service) {
+        const message = Tim.getInstance().createMessage(
+          TIM.TYPES.MSG_CUSTOM,
+          this.data.service,
+          this.data.targetUserId,
+          'link',
+        )
+        this.pushMessage(message)
+      }
     }
   },
   methods: {

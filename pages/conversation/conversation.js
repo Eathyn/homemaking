@@ -15,9 +15,9 @@ Page({
     })
     const { targetUserId, service } = options
     this.setData({
-      targetUserId,
-      // targetUserId: 'user-007', // 测试
-      service,
+      // targetUserId,
+      targetUserId: 'user-007', // 测试
+      service: service ? JSON.parse(service) : null,
     })
   },
 

@@ -12,7 +12,7 @@
   </view>
   <view class="action-bar">
     <i-button
-      wx:if="{{ flow === flowEnum.OUT }}"
+      wx:if="{{ extension === 'link' }}"
       size="mini"
       shape="circle"
       bind:tap="handleSendLink"

@@ -26,6 +26,7 @@
       <block wx:if="{{ _message.type === TIM.TYPES.MSG_CUSTOM }}">
         <i-service-link
           flow="{{ _message.flow }}"
+          extension="{{ _message.payload.extension }}"
           service="{{ _message.payload.description }}"
           bind:send="handleSend"
           bind:select="handleSelect"

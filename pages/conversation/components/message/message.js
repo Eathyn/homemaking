@@ -9,7 +9,6 @@ Component({
   observers: {
     'message': function(message) {
       message.time = formatTime(message.time)
-      console.log('message: ', message)
       this.setData({
         _message: message,
       })
