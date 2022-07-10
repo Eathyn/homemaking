@@ -2,6 +2,8 @@ import Service from '../../model/service'
 import Category from '../../model/category'
 import { throttle } from '../../utils/utils'
 import Tim from '../../model/tim'
+import cache from '../../enum/cache'
+import { setTabBarBadge } from '../../utils/wx'
 
 const service = new Service()
 
@@ -20,6 +22,11 @@ Page({
     this.setData({
       loading: false,
     })
+  },
+
+  onShow() {
+    const unreadCount = wx.getStorageSync(cache.UNREAD_COUNT)
+    setTabBarBadge(unreadCount)
   },
 
   async onPullDownRefresh() {

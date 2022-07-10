@@ -36,5 +36,6 @@ Page({
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId)
     this.pushMessage(message)
     Tim.getInstance().sendMessage(message)
+    this.getOpenerEventChannel().emit('sendMessage')
   },
 })

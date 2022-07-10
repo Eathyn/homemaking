@@ -2,6 +2,7 @@ import { observable, action } from 'mobx-miniprogram'
 import Tim from '../model/tim'
 import TIM from 'tim-wx-sdk-ws'
 import User from '../model/user'
+import { setTabBarBadge } from '../utils/wx'
 
 export const timStore = observable({
   sdkReady: false,

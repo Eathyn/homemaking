@@ -1,4 +1,6 @@
-export default function wxToPromise(method, options = {}) {
+import cache from '../enum/cache'
+
+function wxToPromise(method, options = {}) {
   return new Promise((resolve, reject) => {
     options.success = resolve
     options.fail = err => {
@@ -9,6 +11,8 @@ export default function wxToPromise(method, options = {}) {
 }
 
 async function setTabBarBadge(unreadCount) {
+  // 非 tab-bar 页面调用 setTabBarBadge/removeTabBarBadge 会报错
+  // 先缓存起来，在非 tab-bar 页面的 onShow 里读取缓存
   try {
     if (unreadCount > 0) {
       await wx.setTabBarBadge({

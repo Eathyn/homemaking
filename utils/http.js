@@ -1,6 +1,6 @@
 import ApiConfig from '../config/api'
 import exceptionMessage from '../config/exception-message'
-import wxToPromise from './wx'
+import { wxToPromise } from './wx'
 import Cache from '../enum/cache'
 import User from '../model/user'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'

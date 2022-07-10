@@ -1,5 +1,5 @@
 import Http from './http'
-import wxToPromise from './wx'
+import { wxToPromise } from './wx'
 import ApiConfig from '../config/api'
 
 class FileUploader extends Http {
