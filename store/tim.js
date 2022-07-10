@@ -9,6 +9,7 @@ export const timStore = observable({
   _targetUserId: null,
   intoView: 0,
   isCompleted: false,
+  conversationList: [],
 
   login: action(function() {
     this._runListener()
@@ -52,12 +53,17 @@ export const timStore = observable({
     this.messageList = messageList.concat(this.messageList.slice())
   }),
 
+  getConversationList: action(async function() {
+    this.conversationList = await Tim.getInstance().getConversationList()
+  }),
+
   _runListener() {
     const sdk = Tim.getInstance().getSDK()
     sdk.on(TIM.EVENT.SDK_READY, this._handleSDKReady, this)
     sdk.on(TIM.EVENT.SDK_NOT_READY, this._handleSDKNotReady, this)
     sdk.on(TIM.EVENT.KICKED_OUT, this._handleSDKNotReady, this)
     sdk.on(TIM.EVENT.MESSAGE_RECEIVED, this._handleMessageReceived, this)
+    sdk.on(TIM.EVENT.CONVERSATION_LIST_UPDATED, this._handleConversationListUpdate, this)
   },
 
   _handleSDKReady() {
@@ -81,5 +87,14 @@ export const timStore = observable({
       this.intoView = this.messageList.length - 1
       await Tim.getInstance().setMessageRead(this._targetUserId)
     }
+  },
+
+  _handleConversationListUpdate(evt) {
+    if (!evt.data.length) {
+      return
+    }
+    this.conversationList = evt.data
+    const unreadCount = evt.data.reduce((sum, item) => sum + item.unreadCount, 0)
+    setTabBarBadge(unreadCount)
   },
 })

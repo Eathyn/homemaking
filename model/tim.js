@@ -135,6 +135,12 @@ class Tim {
       gender: userInfo.gender === 1 ? TIM.TYPES.GENDER_MALE : TIM.TYPES.GENDER_FEMALE,
     })
   }
+
+  // 获取会话列表
+  async getConversationList() {
+    const res = await this._SDKInstance.getConversationList()
+    return res.data.conversationList
+  }
 }
 
 export default Tim
