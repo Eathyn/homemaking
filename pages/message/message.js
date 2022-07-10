@@ -13,6 +13,9 @@ Page({
       actions: ['getConversationList'],
     })
   },
+  onShow() {
+    this.getConversationList()
+  },
   onUnload() {
     // 避免内存泄露
     this.storeBindings.destroyStoreBindings()
