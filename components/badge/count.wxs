@@ -1,0 +1,13 @@
+function countFormat(count) {
+  if (count > 2) {
+    return 99
+  }
+  if (!count) {
+    return ''
+  }
+  return count
+}
+
+module.exports = {
+  countFormat: countFormat
+}
