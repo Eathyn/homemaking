@@ -6,12 +6,13 @@ Page({
   data: {
     targetUserId: null,
     service: null,
+    isSent: false,
   },
   onLoad(options) {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady'],
-      actions: ['pushMessage'],
+      actions: ['pushMessage', 'resetMessage', 'getConversationList'],
     })
     const { targetUserId, service } = options
     this.setData({
@@ -22,6 +23,10 @@ Page({
   },
 
   onUnload() {
+    if (!this.data.isSent) {
+      this.getConversationList()
+    }
+    this.resetMessage()
     this.storeBindings.destroyStoreBindings()
   },
 
@@ -36,6 +41,7 @@ Page({
     const message = Tim.getInstance().createMessage(type, content, this.data.targetUserId)
     this.pushMessage(message)
     Tim.getInstance().sendMessage(message)
-    this.getOpenerEventChannel().emit('sendMessage')
+    // this.getOpenerEventChannel().emit('sendMessage')
+    this.data.isSent = true
   },
 })

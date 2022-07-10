@@ -7,20 +7,14 @@ import { setTabBarBadge } from '../../utils/wx'
 Page({
   data: {
     conversationList: [],
-    updateConversionList: false,
   },
   onLoad() {
     this.storeBindings = createStoreBindings(this, {
       store: timStore,
       fields: ['sdkReady', 'conversationList'],
-      actions: ['getConversationList'],
     })
   },
   async onShow() {
-    if (this.data.updateConversionList) {
-      await this.getConversationList()
-      this.data.updateConversionList = false
-    }
     const unreadCount = wx.getStorageSync(cache.UNREAD_COUNT)
     setTabBarBadge(unreadCount)
   },
@@ -36,16 +30,10 @@ Page({
   },
 
   handleSelect(evt) {
-    this.data.updateConversionList = true
     const item = getDataSet(evt, 'item')
     wx.navigateTo({
       // service 不需要，所以传空字符串
       url: `/pages/conversation/conversation?targetUserId=${item.userProfile.userID}&service=`,
-      events: {
-        sendMessage: () => {
-          this.data.updateConversionList = false
-        }
-      }
     })
   },
 })

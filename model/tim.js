@@ -141,6 +141,11 @@ class Tim {
     const res = await this._SDKInstance.getConversationList()
     return res.data.conversationList
   }
+
+  async getConversationProfile(targetUserId) {
+    const res = await this._SDKInstance.getConversationProfile(`C2C${targetUserId}`)
+    return res.data.conversation
+  }
 }
 
 export default Tim

@@ -3,6 +3,7 @@ import { timStore } from '../../../../store/tim'
 import { getEventParam } from '../../../../utils/utils'
 import TIM from 'tim-wx-sdk-ws'
 import Tim from '../../../../model/tim'
+import cache from '../../../../enum/cache'
 
 Component({
   behaviors: [storeBindingsBehavior],
@@ -24,6 +25,9 @@ Component({
       this._setNavigationBarTitle()
       this._setScrollHeight()
       this.setTargetUserId(this.data.targetUserId)
+      const currentConversation = await Tim.getInstance().getConversationProfile(this.data.targetUserId)
+      const unreadCount = wx.getStorageSync(cache.UNREAD_COUNT)
+      wx.setStorageSync(cache.UNREAD_COUNT, unreadCount - currentConversation.unreadCount)
       await this.getMessageList()
       if (this.data.service) {
         const message = Tim.getInstance().createMessage(
