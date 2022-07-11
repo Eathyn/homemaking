@@ -58,6 +58,13 @@ export const timStore = observable({
     this.conversationList = await Tim.getInstance().getConversationList()
   }),
 
+  resetMessage: action(function() {
+    this.messageList = []
+    this._targetUserId = null
+    this.intoView = 0
+    this.isCompleted = false
+  }),
+
   _runListener() {
     const sdk = Tim.getInstance().getSDK()
     sdk.on(TIM.EVENT.SDK_READY, this._handleSDKReady, this)
