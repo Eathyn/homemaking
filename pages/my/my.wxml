@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="header">
+    <i-avatar
+      src="{{ userInfo.avatar }}"
+      text="{{ userInfo.nickname }}"
+      shape="circle"
+      fontSize="34"
+      bind:tap="handleToLogin"
+    />
+  </view>
+</view>
