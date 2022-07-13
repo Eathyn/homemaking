@@ -57,6 +57,17 @@ class Service extends Base {
       method: 'POST',
     })
   }
+
+  /**
+   * 获取服务状态统计
+   * @param type 服务类型 (1:在提供 2:正在找)
+   * @returns {Promise<*|undefined>}
+   */
+  static getServiceStatus(type) {
+    return Http.request({
+      url: `v1/service/count?type=${type}`
+    })
+  }
 }
 
 export default Service

@@ -21,6 +21,8 @@
           slot="{{ index }}"
           text="{{ item.text }}"
           icon="{{ item.icon }}"
+          showBadge="{{ appointWithMeStatus[item.badge] }}"
+          badgeCount="{{ appointWithMeStatus[item.badge] }}"
         />
       </i-grid>
     </view>
@@ -36,6 +38,8 @@
           slot="{{ index }}"
           text="{{ item.text }}"
           icon="{{ item.icon }}"
+          showBadge="{{ myAppointStatus[item.badge] }}"
+          badgeCount="{{ myAppointStatus[item.badge] }}"
         />
       </i-grid>
     </view>
@@ -51,6 +55,8 @@
           slot="{{ index }}"
           text="{{ item.text }}"
           icon="{{ item.icon }}"
+          showBadge="{{ provideServiceStatus[item.badge] }}"
+          badgeCount="{{ provideServiceStatus[item.badge] }}"
         />
       </i-grid>
     </view>
@@ -66,6 +72,8 @@
           slot="{{ index }}"
           text="{{ item.text }}"
           icon="{{ item.icon }}"
+          showBadge="{{ seekServiceStatus[item.badge] }}"
+          badgeCount="{{ seekServiceStatus[item.badge] }}"
         />
       </i-grid>
     </view>
