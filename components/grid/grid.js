@@ -32,12 +32,12 @@ Component({
       })
     },
 
-    handleExtend(evt) {
+    handleSelect(evt) {
       const cell = getEventParam(evt, 'cell')
       this.triggerEvent('itemtap', { cell })
     },
-    
-    handleSelect() {
+
+    handleExtend() {
       this.triggerEvent('extendtap', { cell: this.data.extendCell })
     },
   }

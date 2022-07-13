@@ -12,6 +12,7 @@ import Order from '../../model/order'
 import Service from '../../model/service'
 import roleType from '../../enum/role-type'
 import serviceType from '../../enum/service-type'
+import { getEventParam } from '../../utils/utils'
 
 Page({
   data: {
@@ -70,6 +71,27 @@ Page({
     this.setData({
       provideServiceStatus: await provideServiceStatus,
       seekServiceStatus: await seekServiceStatus,
+    })
+  },
+
+  handleNavToOrder(evt) {
+    const cell = getEventParam(evt, 'cell')
+    console.log(cell)
+    if (!('status' in cell)) {
+      wx.navigateTo({
+        url: `/pages/refund-list/refund-list?role=${cell.role}`
+      })
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/my-order/my-order?role=${cell.role}&status=${cell.status}`
+    })
+  },
+
+  handleNavToMyService(evt) {
+    const { type, status } = getEventParam(evt, 'cell')
+    wx.navigateTo({
+      url: `/pages/my-service/my-service?type=${type}&status=${status}`
     })
   },
 })

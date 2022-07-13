@@ -13,6 +13,7 @@ Component({
       value: '50',
     },
     text: String,
+    cell: Object,
   },
   methods: {
     handleSelect() {
