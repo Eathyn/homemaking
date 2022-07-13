@@ -66,6 +66,8 @@
     "i-button": "/components/button/button",
     "i-image-uploader": "/components/image-uploader/image-uploader",
     "i-badge": "/components/badge/badge",
+    "i-grid": "/components/grid/grid",
+    "i-grid-item": "/components/grid-item/grid-item",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
     "mp-cell": "weui-miniprogram/cell/cell",

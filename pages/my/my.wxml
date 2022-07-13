@@ -8,4 +8,66 @@
       bind:tap="handleToLogin"
     />
   </view>
+  <view class="main">
+    <view class="grid-container">
+      <i-grid
+        rowNum="{{ appointWithMeGrid.rowNum }}"
+        title="{{ appointWithMeGrid.title }}"
+        extend="{{ appointWithMeGrid.extend }}"
+      >
+        <i-grid-item
+          wx:for="{{ appointWithMeGrid.gridItems }}"
+          wx:key="index"
+          slot="{{ index }}"
+          text="{{ item.text }}"
+          icon="{{ item.icon }}"
+        />
+      </i-grid>
+    </view>
+    <view class="grid-container">
+      <i-grid
+        rowNum="{{ myAppointGrid.rowNum }}"
+        title="{{ myAppointGrid.title }}"
+        extend="{{ myAppointGrid.extend }}"
+      >
+        <i-grid-item
+          wx:for="{{ myAppointGrid.gridItems }}"
+          wx:key="index"
+          slot="{{ index }}"
+          text="{{ item.text }}"
+          icon="{{ item.icon }}"
+        />
+      </i-grid>
+    </view>
+    <view class="grid-container">
+      <i-grid
+        rowNum="{{ myProvideGird.rowNum }}"
+        title="{{ myProvideGird.title }}"
+        extend="{{ myProvideGird.extend }}"
+      >
+        <i-grid-item
+          wx:for="{{ myProvideGird.gridItems }}"
+          wx:key="index"
+          slot="{{ index }}"
+          text="{{ item.text }}"
+          icon="{{ item.icon }}"
+        />
+      </i-grid>
+    </view>
+    <view class="grid-container">
+      <i-grid
+        rowNum="{{ mySeekGrid.rowNum }}"
+        title="{{ mySeekGrid.title }}"
+        extend="{{ mySeekGrid.extend }}"
+      >
+        <i-grid-item
+          wx:for="{{ mySeekGrid.gridItems }}"
+          wx:key="index"
+          slot="{{ index }}"
+          text="{{ item.text }}"
+          icon="{{ item.icon }}"
+        />
+      </i-grid>
+    </view>
+  </view>
 </view>
