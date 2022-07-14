@@ -1,6 +1,7 @@
 import Http from '../utils/http'
+import Base from './base'
 
-class Order {
+class Order extends Base {
   static createOrder(serviceId, address) {
     return Http.request({
       url: 'v1/order',
@@ -20,6 +21,25 @@ class Order {
     return Http.request({
       url: `v1/order/count?role=${role}`,
     })
+  }
+  
+  async getMyOrderList(role, status) {
+    if (!this.hasMoreData) {
+      return this.data
+    }
+    const orderList = await Http.request({
+      url: 'v1/order/my',
+      data: {
+        page: this.page,
+        count: this.count,
+        role,
+        status,
+      }
+    })
+    this.data = this.data.concat(orderList.data)
+    this.hasMoreData = this.page !== orderList.last_page
+    this.page++
+    return this.data
   }
 }
 

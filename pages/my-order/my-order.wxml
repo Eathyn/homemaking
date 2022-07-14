@@ -1,1 +1,36 @@
-<view>my order</view>
+<view class="container">
+  <i-tabs
+    tabs="{{ tabs }}"
+    active="{{ active }}"
+    bind:change="handleTabChange"
+    bind:doubleclicktab="handleScrollToTop"
+  >
+    <view slot="panel">
+      <view
+        class="order-preview"
+        wx:for="{{ orderList }}"
+        wx:key="index"
+      >
+        <i-order-preview
+          order="{{ item }}"
+          role="{{ role }}"
+        >
+          <i-publisher-action
+            wx:if="{{ role === roleType.PUBLISHER }}"
+            order="{{item}}"
+            bind:nav-detail="handleNavDetail"
+            bind:chat="handleChat"
+          />
+          <i-consumer-action
+            wx:if="{{role === roleType.CONSUMER}}"
+            order="{{item}}"
+            bind:nav-detail="handleNavDetail"
+            bind:refund="handleRefund"
+            bind:chat="handleChat"
+          />
+        </i-order-preview>
+      </view>
+    </view>
+    <i-show-status show="{{!orderList.length}}" top="220" content="暂时没有订单" />
+  </i-tabs>
+</view>

@@ -69,6 +69,7 @@
     "i-badge": "/components/badge/badge",
     "i-grid": "/components/grid/grid",
     "i-grid-item": "/components/grid-item/grid-item",
+    "i-order-preview": "/components/order-preview/order-preview",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
     "mp-cell": "weui-miniprogram/cell/cell",

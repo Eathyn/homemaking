@@ -9,6 +9,15 @@ Component({
       type: Array,
       value: [],
     },
+    active: {
+      type: Number,
+      value: 0,
+    },
+  },
+  observers: {
+    active: function(active) {
+      this.setData({ currentTabIndex: active })
+    },
   },
   data: {
     currentTabIndex: 0,
