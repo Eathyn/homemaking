@@ -1,5 +1,15 @@
+import roleType from '../../enum/role-type'
+
 Component({
-  properties: {},
-  data: {},
-  methods: {}
+  properties: {
+    order: Object,
+    role: Number,
+    hideTop: {
+      type: Boolean,
+      value: false,
+    },
+  },
+  data: {
+    roleType,
+  },
 })

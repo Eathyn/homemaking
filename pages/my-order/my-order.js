@@ -56,18 +56,28 @@ Page({
   },
   
   handleScrollToTop() {
-    
+    wx.pageScrollTo({ scrollTop: 0 })
   },
   
-  handleNavDetail() {
-    
+  handleNavDetail(evt) {
+    const order = getEventParam(evt, 'order')
+    wx.navigateTo({
+      url: `/pages/order-detail/order-detail?role=${this.data.role}&order=${JSON.stringify(order)}`
+    })
   },
   
-  handleChat() {
-    
+  handleChat(evt) {
+    const order = getEventParam(evt, 'order')
+    const targetUserId = order[this.data.role === roleType.PUBLISHER ? 'consumer' : 'publisher'].id
+    wx.navigateTo({
+      url: `/pages/conversation/conversation?targetUserId=${targetUserId}&service=${JSON.stringify(order.service_snap)}`
+    })
   },
   
-  handleRefund() {
-    
+  handleRefund(evt) {
+    const order = getEventParam(evt, 'order')
+    wx.navigateTo({
+      url: `/pages/refund/refund?order=${JSON.stringify(order)}`
+    })
   },
 })

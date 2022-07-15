@@ -12,7 +12,9 @@
     "pages/order-success/order-success",
     "pages/my-order/my-order",
     "pages/publisher-success/publisher-success",
-    "pages/refund-list/refund-list"
+    "pages/refund-list/refund-list",
+    "pages/order-detail/order-detail",
+    "pages/refund/refund"
   ],
   "window": {
     "backgroundTextStyle": "dark",
