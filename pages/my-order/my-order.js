@@ -31,7 +31,7 @@ Page({
   
   async onPullDownRefresh() {
     await this._getOrderList()
-    this.stopPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
 
   async onReachBottom() {
