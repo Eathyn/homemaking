@@ -19,6 +19,25 @@ class Rating extends Base {
     this.page++
     return this.data
   }
+
+  static async getRatingByOrderId(orderId) {
+    return Http.request({
+      url: 'v1/rating/order',
+      data: {
+        order_id: orderId,
+      },
+    })
+  }
+  
+  static async createRating(order_id, score, content, illustration) {
+    return Http.request({
+      url: 'v1/rating',
+      data: {
+        order_id, score, content, illustration
+      },
+      method: 'POST'
+    })
+  }
 }
 
 export default Rating

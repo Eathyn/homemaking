@@ -1,3 +1,14 @@
+// 防抖
+function debounce(callback, interval = 500) {
+  let timer
+  return () => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      callback.call(this, ...arguments)
+    }, interval)
+  }
+}
+
 /**
  * 节流函数
  * @param {Function} callback 需要被节流的函数
@@ -42,6 +53,7 @@ function getEventParam(event, target) {
 }
 
 export {
+  debounce,
   throttle,
   getDataSet,
   getEventParam,

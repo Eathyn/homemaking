@@ -23,6 +23,22 @@ class Order extends Base {
     })
   }
   
+  static updateOrderStatus(orderId, action) {
+    return Http.request({
+      url: `v1/order/${orderId}`,
+      data: {
+        action,
+      },
+      method: 'POST',
+    })
+  }
+  
+  static getOrderById(orderId) {
+    return Http.request({
+      url: `v1/order/${orderId}`
+    })
+  }
+  
   async getMyOrderList(role, status) {
     if (!this.hasMoreData) {
       return this.data
