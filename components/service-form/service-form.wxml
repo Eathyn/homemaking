@@ -54,7 +54,12 @@
         bind:change="handleBindCategoryChange"
       >
         <view wx:if="{{ categoryPickerIndex !== null }}">{{ categoryList[categoryPickerIndex].name }}</view>
-        <view wx:else>请选择分类</view>
+        <view
+          wx:else
+          class="picker-placeholder"
+        >
+          请选择分类
+        </view>
       </picker>
     </mp-cell>
     <mp-cell
@@ -105,7 +110,12 @@
         bind:change="handleBeginDateChange"
       >
         <view wx:if="{{ formData.begin_date }}">{{ formData.begin_date }}</view>
-        <view wx:else>服务内容有效期开始日期</view>
+        <view
+          wx:else
+          class="picker-placeholder"
+        >
+          服务内容有效期开始日期
+        </view>
       </picker>
     </mp-cell>
     <mp-cell
